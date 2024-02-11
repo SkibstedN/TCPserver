@@ -6,7 +6,7 @@ import datetime
 def get_time_in_apache_format():
     return datetime.datetime.now().strftime('%d/%b/%Y:%H:%M:%S %z')
 
-# Funktion til at logge en forespørgsel
+# Funktion til at logge requests
 def log_request(client_ip, request_line, response_code, content_length):
     with open("server.log", "a") as log_file:  # Åbner logfilen i append-tilstand
         try:
@@ -68,5 +68,5 @@ while True:
     connection_socket.send(final_response)
     connection_socket.close()
     
-    # Logger hver forespørgsel
+    # Logger hver request
     log_request(client_ip, request_line, response_code, content_length)
